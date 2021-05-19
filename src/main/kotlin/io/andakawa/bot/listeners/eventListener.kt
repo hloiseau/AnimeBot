@@ -1,8 +1,8 @@
 package io.andakawa.bot.listeners
 
 import io.andakawa.bot.Bot
-import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent
-import net.dv8tion.jda.core.hooks.ListenerAdapter
+import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
+import net.dv8tion.jda.api.hooks.ListenerAdapter
 
 class eventListener(val bot: Bot) : ListenerAdapter(){
     override fun onGuildMessageReceived(event: GuildMessageReceivedEvent) {

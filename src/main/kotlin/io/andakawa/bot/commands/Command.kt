@@ -1,6 +1,6 @@
 package io.andakawa.bot.commands
 
-import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent
+import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 
 abstract class Command(val label: String) {
     open fun handle(event: GuildMessageReceivedEvent) : Boolean {

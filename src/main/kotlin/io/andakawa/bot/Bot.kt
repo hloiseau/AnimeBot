@@ -2,8 +2,7 @@ package io.andakawa.bot
 
 import io.andakawa.bot.commands.utils.Ping
 import io.andakawa.bot.listeners.eventListener
-import net.dv8tion.jda.core.AccountType
-import net.dv8tion.jda.core.JDABuilder
+import net.dv8tion.jda.api.JDABuilder
 
 class Bot(val token: String) {
     val commands = listOf (
@@ -12,12 +11,10 @@ class Bot(val token: String) {
 
     fun start() {
         println("Commands available: ${commands.size}\n")
-
-        val builder = JDABuilder(AccountType.BOT)
-                .setToken(token)
+        val builder = JDABuilder.createDefault(Settings.BOT_TOKEN)
                 .setAutoReconnect(true)
-                .addEventListener(eventListener(this))
+                .addEventListeners(eventListener(this))
 
-        val jda = builder.buildBlocking()
+        val jda = builder.build()
     }
 }
