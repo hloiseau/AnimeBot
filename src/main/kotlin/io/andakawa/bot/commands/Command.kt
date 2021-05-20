@@ -2,15 +2,15 @@ package io.andakawa.bot.commands
 
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 
-abstract class Command(val label: String) {
+abstract class Command(private val label: String) {
     open fun handle(event: GuildMessageReceivedEvent) : Boolean {
         val message = event.message.contentRaw
 
-        if (message.startsWith(label)) {
+        return if (message.startsWith(label)) {
             run(event)
-            return true
+            true
         } else {
-            return false
+            false
         }
     }
 

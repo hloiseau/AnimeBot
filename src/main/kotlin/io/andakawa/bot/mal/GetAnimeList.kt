@@ -9,18 +9,26 @@ import net.sandrohc.jikan.model.enums.AnimeStatus
 class GetAnimeList {
     private val jikan = Jikan()
 
+    fun searchForAiringAnime(name: String): List<AnimeSearchSub>? = jikan.query()
+        .anime()
+        .search()
+        .limit(5)
+        .query(name)
+        .status(AnimeStatus.AIRING)
+        .execute()
+        .collectList()
+        .block();
+
     fun searchForAnime(name: String): List<AnimeSearchSub>? = jikan.query()
-            .anime()
-            .search()
-            .query(name)
-            .status(AnimeStatus.AIRING)
-            .execute()
-            .collectList()
-            .block();
+        .anime()
+        .search()
+        .limit(5)
+        .query(name)
+        .execute()
+        .collectList()
+        .block();
 
     fun getAnimeById(id: Int): Anime? = jikan.query().anime()[id]
-            .execute()
-            .block()
-
-
+        .execute()
+        .block()
 }
