@@ -14,8 +14,9 @@ class SearchAnime : Command("${Settings.PREFIX}searchAnime") {
         val search = request.joinToString(" ")
         val message = StringBuilder();
         for ( anime in animeList.searchForAnime(search)!!){
-            message.append(anime.title).append("\n")
+            message.append(anime.getEnglishTitle()).append("\n")
         }
         event.channel.sendMessage(message).queue()
     }
 }
+
