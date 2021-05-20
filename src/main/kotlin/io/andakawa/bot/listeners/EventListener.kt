@@ -1,10 +1,11 @@
 package io.andakawa.bot.listeners
 
 import io.andakawa.bot.Bot
+import io.andakawa.bot.persistence.Store
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
 
-class eventListener(val bot: Bot) : ListenerAdapter(){
+class EventListener(val bot: Bot, private val store: Store) : ListenerAdapter() {
     override fun onGuildMessageReceived(event: GuildMessageReceivedEvent) {
         // Prevents message recognition if author is a bot
         if (event.author.isBot) return
