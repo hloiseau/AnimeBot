@@ -6,6 +6,8 @@ import io.andakawa.bot.commands.utils.SearchAiringAnime
 import io.andakawa.bot.listeners.EventListener
 import io.andakawa.bot.commands.utils.SearchAnime
 import io.andakawa.bot.persistence.Store
+import io.andakawa.bot.mal.GetAnimeList
+import io.andakawa.bot.mal.PollMalApi
 import net.dv8tion.jda.api.JDABuilder
 
 class Bot(val token: String) {
