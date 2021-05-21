@@ -8,16 +8,16 @@ import io.andakawa.bot.persistence.Store
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 import java.lang.StringBuilder
 
-class SearchAiringAnime: Command("${Settings.PREFIX}airingAnime") {
+class GetAnimePage : Command("${Settings.PREFIX}animePage") {
     override suspend fun run(event: GuildMessageReceivedEvent, store: Store, bot: Bot) {
         val animeList = GetAnimeList()
         val search = event.message.contentRaw.ToSearch(label)
+        val anime = animeList.searchForAnime(search)?.first()?.ToFullAnime()
         val message = StringBuilder();
-        for ( anime in animeList.searchForAiringAnime(search)!!){
-            message.append(anime.ToFullAnime().titleEnglish).append("\n")
-            message.append("${anime.imageUrl!!} \n")
-        }
+        message.append("${anime?.titleEnglish!!} \n")
+        message.append("${anime.url!!} \n")
         event.channel.sendMessage(message).queue()
     }
-    override val helpDescription: String = "> ${Settings.PREFIX}airingAnime <name> → Show airing anime containing <name>"
+
+    override val helpDescription: String = "> ${Settings.PREFIX}animePage <id> → Show page of anime with <id>"
 }

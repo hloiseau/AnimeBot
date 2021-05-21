@@ -13,7 +13,10 @@ class Bot(val token: String) {
         GetAnime(),
         SearchAnime(),
         SearchAiringAnime(),
-        SetPing()
+        SetPing(),
+        GetAnimePage(),
+        GetAnimeTrailer(),
+        Wut()
     )
 
     fun start() {

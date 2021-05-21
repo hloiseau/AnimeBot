@@ -8,16 +8,17 @@ import io.andakawa.bot.persistence.Store
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 import java.lang.StringBuilder
 
-class SearchAiringAnime: Command("${Settings.PREFIX}airingAnime") {
+class GetAnimeTrailer : Command("${Settings.PREFIX}animeTrailer") {
     override suspend fun run(event: GuildMessageReceivedEvent, store: Store, bot: Bot) {
         val animeList = GetAnimeList()
         val search = event.message.contentRaw.ToSearch(label)
-        val message = StringBuilder();
-        for ( anime in animeList.searchForAiringAnime(search)!!){
-            message.append(anime.ToFullAnime().titleEnglish).append("\n")
-            message.append("${anime.imageUrl!!} \n")
-        }
+        val anime = animeList.searchForAnime(search)?.first()?.ToFullAnime()
+        val message = StringBuilder()
+        message.append("${anime?.titleEnglish!!} \n")
+        val trailer = Regex("^https?://.*(?:youtu.be/|v/|u/\\w/|embed/|watch?v=)([^#&?]*).*$").find(anime.trailerUrl!!)?.groups?.get(1)?.value
+        message.append("http://www.youtube.com/watch?v=${trailer} \n")
         event.channel.sendMessage(message).queue()
     }
-    override val helpDescription: String = "> ${Settings.PREFIX}airingAnime <name> → Show airing anime containing <name>"
+
+    override val helpDescription: String = "> ${Settings.PREFIX}animeTrailer <id> → Show trailer of anime with <id>"
 }
