@@ -1,10 +1,7 @@
 package io.andakawa.bot
 
-import io.andakawa.bot.commands.utils.GetAnime
-import io.andakawa.bot.commands.utils.Ping
-import io.andakawa.bot.commands.utils.SearchAiringAnime
+import io.andakawa.bot.commands.utils.*
 import io.andakawa.bot.listeners.EventListener
-import io.andakawa.bot.commands.utils.SearchAnime
 import io.andakawa.bot.persistence.Store
 import io.andakawa.bot.mal.GetAnimeList
 import io.andakawa.bot.mal.PollMalApi
@@ -15,7 +12,8 @@ class Bot(val token: String) {
         Ping(),
         GetAnime(),
         SearchAnime(),
-        SearchAiringAnime()
+        SearchAiringAnime(),
+        SetPing()
     )
 
     fun start() {

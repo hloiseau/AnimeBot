@@ -13,7 +13,7 @@ class SearchAnime : Command("${Settings.PREFIX}searchAnime") {
         val request = event.message.contentRaw.split(" ").toMutableList()
         request.removeAt(0)
         val search = request.joinToString(" ")
-        val message = StringBuilder();
+        val message = StringBuilder()
         for (anime in animeList.searchForAnime(search)!!) {
             message.append(anime.getEnglishTitle()).append("\n")
         }

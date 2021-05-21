@@ -6,16 +6,22 @@ import kotlinx.serialization.json.Json
 import java.io.File
 import java.nio.file.Path
 
-class Store private constructor(private val contentPath:String) {
+class Store private constructor(private val contentPath: String) {
     private var content: StoreContent? = null
     private lateinit var job: Job
+
     companion object {
-        fun create(storePath: String) :Store {
+        fun create(storePath: String): Store {
             val store = Store(storePath);
-            store.job = CoroutineScope(Dispatchers.Default).launch {
-                val txt = File(storePath).bufferedReader()
-                    .use{ it.readText()}
-                store.content = Json.decodeFromString<StoreContent>(txt);
+            if (File(storePath).exists()) {
+                store.job = CoroutineScope(Dispatchers.Default).launch {
+                    val txt = File(storePath).bufferedReader()
+                        .use { it.readText() }
+                    store.content = Json.decodeFromString<StoreContent>(txt);
+                }
+            } else {
+                store.job = runBlocking { launch {  } }; // empty finished job ? I don't know how to do this.
+                store.content = StoreContent("Pong :ping_pong:")
             }
             return store;
         }
@@ -26,6 +32,7 @@ class Store private constructor(private val contentPath:String) {
         job.join();
         content = newContent;
     }
+
     suspend fun getContent(): StoreContent {
         job.join();
         return content!!;

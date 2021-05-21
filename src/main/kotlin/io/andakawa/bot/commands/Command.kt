@@ -3,7 +3,7 @@ package io.andakawa.bot.commands
 import io.andakawa.bot.persistence.Store
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 
-abstract class Command(private val label: String ) {
+abstract class Command(protected val label: String ) {
 
     open suspend fun handle(event: GuildMessageReceivedEvent, store: Store) : Boolean {
         val message = event.message.contentRaw
