@@ -6,14 +6,14 @@ import kotlinx.serialization.json.Json
 import java.io.File
 import java.nio.file.Path
 
-class Store private constructor(private val contentPath:Path) {
+class Store private constructor(private val contentPath:String) {
     private var content: StoreContent? = null
     private lateinit var job: Job
     companion object {
-        suspend fun create(storePath: Path) :Store {
+        fun create(storePath: String) :Store {
             val store = Store(storePath);
             store.job = CoroutineScope(Dispatchers.Default).launch {
-                val txt = File(storePath.toString()).bufferedReader()
+                val txt = File(storePath).bufferedReader()
                     .use{ it.readText()}
                 store.content = Json.decodeFromString<StoreContent>(txt);
             }
