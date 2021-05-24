@@ -22,3 +22,4 @@
 /src/main/kotlin/io/andakawa/bot/Settings.kt
 /target/classes/META-INF/
 /.idea/libraries/
+/store.json

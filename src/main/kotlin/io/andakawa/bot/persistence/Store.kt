@@ -31,6 +31,13 @@ class Store private constructor(private val contentPath: String) {
     suspend fun updateContent(newContent: StoreContent) {
         job.join();
         content = newContent;
+        job = coroutineScope{
+            launch {
+                val str = Json.encodeToString(newContent);
+                File(contentPath).writeText(str)
+            }
+
+        }
     }
 
     suspend fun getContent(): StoreContent {
