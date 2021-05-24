@@ -7,7 +7,7 @@ import io.andakawa.bot.persistence.Store
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 import java.lang.StringBuilder
 
-class Wut : Command("${Settings.PREFIX}wut") {
+class Help : Command("help") {
     override suspend fun run(event: GuildMessageReceivedEvent, store: Store, bot: Bot) {
         val message = StringBuilder();
         message.append("Available commands : \n")

@@ -8,7 +8,7 @@ import io.andakawa.bot.persistence.Store
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 import java.lang.StringBuilder
 
-class GetAnimePage : Command("${Settings.PREFIX}animePage") {
+class GetAnimePage : Command("animePage") {
     override suspend fun run(event: GuildMessageReceivedEvent, store: Store, bot: Bot) {
         val animeList = GetAnimeList()
         val search = event.message.contentRaw.ToSearch(label)

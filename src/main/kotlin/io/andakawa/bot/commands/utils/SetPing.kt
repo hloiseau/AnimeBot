@@ -6,7 +6,7 @@ import io.andakawa.bot.commands.Command
 import io.andakawa.bot.persistence.Store
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 
-class SetPing : Command("${Settings.PREFIX}setping") {
+class SetPing : Command("setping") {
     override suspend fun run(event: GuildMessageReceivedEvent, store: Store, bot: Bot) {
         val newPing = event.message.contentRaw.ToSearch(label);
         val newContent = store.getContent().copy(

@@ -8,7 +8,7 @@ import io.andakawa.bot.persistence.Store
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 import java.lang.StringBuilder
 
-class GetAnime : Command("${Settings.PREFIX}getAnime") {
+class GetAnime : Command("getAnime") {
     override suspend fun run(event: GuildMessageReceivedEvent, store: Store, bot: Bot) {
         val animeList = GetAnimeList()
         val id = event.message.contentRaw.filter{ it.isDigit() }.toInt()

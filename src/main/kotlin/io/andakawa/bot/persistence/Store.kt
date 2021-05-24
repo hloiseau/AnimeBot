@@ -21,7 +21,7 @@ class Store private constructor(private val contentPath: String) {
                 }
             } else {
                 store.job = runBlocking { launch {  } }; // empty finished job ? I don't know how to do this.
-                store.content = StoreContent("Pong :ping_pong:")
+                store.content = StoreContent("Pong :ping_pong:", mapOf())
             }
             return store;
         }
@@ -33,7 +33,7 @@ class Store private constructor(private val contentPath: String) {
         content = newContent;
         job = coroutineScope{
             launch {
-                val str = Json.encodeToString(newContent);
+                val str = Json.encodeToString(newContent)
                 File(contentPath).writeText(str)
             }
 

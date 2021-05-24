@@ -3,8 +3,6 @@ package io.andakawa.bot
 import io.andakawa.bot.commands.utils.*
 import io.andakawa.bot.listeners.EventListener
 import io.andakawa.bot.persistence.Store
-import io.andakawa.bot.mal.GetAnimeList
-import io.andakawa.bot.mal.PollMalApi
 import net.dv8tion.jda.api.JDABuilder
 
 class Bot(val token: String) {
@@ -16,7 +14,9 @@ class Bot(val token: String) {
         SetPing(),
         GetAnimePage(),
         GetAnimeTrailer(),
-        Wut()
+        Help(),
+        SetAlias(),
+        RemoveAlias()
     )
 
     fun start() {
