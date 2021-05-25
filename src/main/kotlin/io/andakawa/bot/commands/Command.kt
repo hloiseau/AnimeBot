@@ -17,10 +17,10 @@ abstract class Command(protected val label: String) {
             val realCommand = content.aliases[commandTxt]
             if( realCommand != label ) return false
         }
-        run(event, store, bot)
+        run(message.drop(1), event, store, bot)
         return true
     }
 
-    abstract suspend fun run(event: GuildMessageReceivedEvent, store: Store, bot: Bot)
+    abstract suspend fun run( args: List<String>, event: GuildMessageReceivedEvent, store: Store, bot: Bot)
     abstract val helpDescription: String
 }

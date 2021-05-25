@@ -17,7 +17,7 @@ class EventListener(val bot: Bot, private val store: Store) : ListenerAdapter() 
             launch {
                 for (command in bot.commands) {
                     if (command.handle(event, store, bot)) {
-                        break;
+                        break
                     }
                 }
             }

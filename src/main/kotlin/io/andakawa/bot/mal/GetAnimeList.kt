@@ -17,7 +17,7 @@ class GetAnimeList {
         .status(AnimeStatus.AIRING)
         .execute()
         .collectList()
-        .block();
+        .block()
 
     fun searchForAnime(name: String): List<AnimeSearchSub>? = jikan.query()
         .anime()
@@ -26,7 +26,7 @@ class GetAnimeList {
         .query(name)
         .execute()
         .collectList()
-        .block();
+        .block()
 
     fun getAnimeById(id: Int): Anime? = jikan.query().anime()[id]
         .execute()
