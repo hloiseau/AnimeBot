@@ -1,7 +1,7 @@
-package io.andakawa.bot.listeners
+package io.kuinox.bot.listeners
 
-import io.andakawa.bot.Bot
-import io.andakawa.bot.persistence.Store
+import io.kuinox.bot.Bot
+import io.kuinox.bot.persistence.Store
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
 import kotlinx.coroutines.*

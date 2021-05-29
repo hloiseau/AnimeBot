@@ -1,20 +1,19 @@
-package io.andakawa.bot.commands.utils
+package io.kuinox.bot.commands
 
-import io.andakawa.bot.Bot
-import io.andakawa.bot.Settings
-import io.andakawa.bot.commands.Command
-import io.andakawa.bot.commands.CommandHandler
-import io.andakawa.bot.commands.CommandWithArguments
-import io.andakawa.bot.persistence.Store
+import io.kuinox.bot.Bot
+import io.kuinox.bot.Settings
+import io.kuinox.bot.commands.helpers.CommandHandler
+import io.kuinox.bot.commands.helpers.CommandWithArguments
+import io.kuinox.bot.persistence.Store
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 
-class RemoveAlias : CommandWithArguments("removeAlias", arrayOf(RemoveAliasHandler())) {
+class RemoveAlias : CommandWithArguments("removeAlias", RemoveAliasHandler()) {
     override val helpDescription: String
         get() = "> ${Settings.PREFIX}removeAlias aled\nRemove the alias 'aled'."
 
 }
 
-class RemoveAliasHandler : CommandHandler(false, arrayOf("Alias to remove.")){
+class RemoveAliasHandler : CommandHandler(false, "Alias to remove."){
     override suspend fun run(args: List<String>, event: GuildMessageReceivedEvent, store: Store, bot: Bot) {
         val content = store.getContent()
         val alias = content.aliases[args[0]]

@@ -1,11 +1,11 @@
-package io.andakawa.bot.commands
+package io.kuinox.bot.commands.helpers
 
-import io.andakawa.bot.Bot
-import io.andakawa.bot.Settings
-import io.andakawa.bot.persistence.Store
+import io.kuinox.bot.Bot
+import io.kuinox.bot.Settings
+import io.kuinox.bot.persistence.Store
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 
-abstract class Command(protected val label: String) {
+abstract class Command(private val label: String) {
 
     open suspend fun handle(event: GuildMessageReceivedEvent, store: Store, bot: Bot): Boolean {
         val message: List<String> = event.message.contentRaw.split(" ")

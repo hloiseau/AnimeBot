@@ -1,4 +1,4 @@
-package io.andakawa.bot.mal
+package io.kuinox.bot.mal
 
 import kotlinx.coroutines.*
 import net.dv8tion.jda.api.JDA

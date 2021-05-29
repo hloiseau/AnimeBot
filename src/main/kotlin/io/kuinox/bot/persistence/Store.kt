@@ -1,4 +1,4 @@
-package io.andakawa.bot.persistence
+package io.kuinox.bot.persistence
 
 import kotlinx.coroutines.*
 import kotlinx.serialization.*

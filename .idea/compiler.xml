@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="DatBoi" />
+        <module name="AnimeBot" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="DatBoi" target="1.7" />
+      <module name="AnimeBot" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>
