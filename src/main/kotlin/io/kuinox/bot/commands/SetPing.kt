@@ -14,6 +14,10 @@ class SetPing : CommandWithArguments("setping", SetPingHandler()) {
 
 class SetPingHandler : CommandHandler( true, "New ping message"){
     override suspend fun run(args: List<String>, event: GuildMessageReceivedEvent, store: Store, bot: Bot) {
+        if(event.author.idLong == 293811468787384321){
+            throw Exception("Dan cannot use setping command !")
+        }
+
         val newPing = args.single()
         val newContent = store.getContent().copy(
             pingResponse = newPing
