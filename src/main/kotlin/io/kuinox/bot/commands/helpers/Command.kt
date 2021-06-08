@@ -8,7 +8,7 @@ import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 abstract class Command(private val label: String) {
 
     open suspend fun handle(event: GuildMessageReceivedEvent, store: Store, bot: Bot): Boolean {
-        val message: List<String> = event.message.contentRaw.split(" ")
+        val message: List<String> by lazy { event.message.contentRaw.split(" ") }
         val command = message[0]
         if (!command.startsWith(Settings.PREFIX)) return false
         val commandTxt = command.drop(1)
