@@ -21,6 +21,6 @@ class HelpHandler : CommandHandler(false ) {
         for (command in bot.commands){
             message.append("${command.helpDescription} \n")
         }
-        event.channel.sendMessage(message).queue()
+        event.message.reply(message).queue()
     }
 }

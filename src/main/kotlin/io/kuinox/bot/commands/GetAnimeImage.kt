@@ -21,6 +21,6 @@ class GetAnimeImageHandler : CommandHandler(true, "Search string.") {
         val message = StringBuilder()
         message.append("${anime?.titleEnglish!!} \n")
         message.append("${anime.imageUrl!!} \n")
-        event.channel.sendMessage(message).queue()
+        event.message.reply(message).queue()
     }
 }

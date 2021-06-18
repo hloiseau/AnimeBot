@@ -14,7 +14,8 @@ class SetPing : CommandWithArguments("setPing", SetPingHandler()) {
 
 class SetPingHandler : CommandHandler( true, "New ping message"){
     override suspend fun run(args: List<String>, event: GuildMessageReceivedEvent, store: Store, bot: Bot) {
-        if(event.author.idLong == 293811468787384321){
+        if(event.author.idLong == 293811468787384321 || event.author.idLong == 656522661291098143){
+            event.message.reply(("Non.")).queue()
             throw Exception("Dan cannot use setping command !")
         }
 
@@ -23,6 +24,6 @@ class SetPingHandler : CommandHandler( true, "New ping message"){
             pingResponse = newPing
         )
         store.updateContent(newContent)
-        event.channel.sendMessage("Ping response set to: $newPing").queue()
+        event.message.reply("Ping response set to: $newPing").queue()
     }
 }

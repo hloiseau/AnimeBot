@@ -22,6 +22,6 @@ class GetAnimeTrailerHandler : CommandHandler(true, "Search string."){
         message.append("${anime?.titleEnglish!!} \n")
         val trailer = Regex("^https?://.*(?:youtu.be/|v/|u/\\w/|embed/|watch?v=)([^#&?]*).*$").find(anime.trailerUrl!!)?.groups?.get(1)?.value
         message.append("https://www.youtube.com/watch?v=${trailer} \n")
-        event.channel.sendMessage(message).queue()
+        event.message.reply(message).queue()
     }
 }

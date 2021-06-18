@@ -13,6 +13,6 @@ class Ping : CommandWithArguments("ping", PingHandler()) {
 
 class PingHandler : CommandHandler(false){
     override suspend fun run(args: List<String>, event: GuildMessageReceivedEvent, store: Store, bot: Bot) {
-        event.channel.sendMessage(store.getContent().pingResponse).queue()
+        event.message.reply(store.getContent().pingResponse).queue()
     }
 }

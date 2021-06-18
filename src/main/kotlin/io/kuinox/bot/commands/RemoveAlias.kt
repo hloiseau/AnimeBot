@@ -18,7 +18,7 @@ class RemoveAliasHandler : CommandHandler(false, "Alias to remove."){
         val content = store.getContent()
         val alias = content.aliases[args[0]]
         if (alias == null) {
-            event.channel.sendMessage("There is no such alias.").queue()
+            event.message.reply("There is no such alias.").queue()
         }
 
         store.updateContent(
@@ -26,6 +26,6 @@ class RemoveAliasHandler : CommandHandler(false, "Alias to remove."){
                 aliases = content.aliases - args[0]
             )
         )
-        event.channel.sendMessage("The alias has been removed.").queue()
+        event.message.reply("The alias has been removed.").queue()
     }
 }

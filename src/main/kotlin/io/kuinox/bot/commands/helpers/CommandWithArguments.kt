@@ -19,11 +19,11 @@ abstract class CommandWithArguments(label: String, private vararg val handlers: 
             }.").queue()
             return
         }
-        if(msgArgs.any() || !compatibleHandler.greedy) {
+        if(!compatibleHandler.greedy) {
             compatibleHandler.run(msgArgs, event, store, bot )
             return
         }
         val handlerArgs = msgArgs.take(compatibleHandler.argNames.size - 1) + msgArgs.drop(compatibleHandler.argNames.size - 1).joinToString(" ")
-        compatibleHandler.run(msgArgs, event, store, bot )
+        compatibleHandler.run(handlerArgs, event, store, bot )
     }
 }

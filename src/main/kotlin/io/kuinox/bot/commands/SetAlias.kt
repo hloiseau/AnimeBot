@@ -17,7 +17,7 @@ class SetAliasHandler : CommandHandler(false, "Alias name.", "Command name.") {
         val content = store.getContent()
         val alias = content.aliases[args[0]]
         if (alias != null) {
-            event.channel.sendMessage("This alias is already bind to $alias").queue()
+            event.message.reply("This alias is already bind to $alias").queue()
         }
 
         store.updateContent(
@@ -25,6 +25,6 @@ class SetAliasHandler : CommandHandler(false, "Alias name.", "Command name.") {
                 aliases = content.aliases + Pair(args[0], args[1])
             )
         )
-        event.channel.sendMessage("The alias has been added.").queue()
+        event.message.reply("The alias has been added.").queue()
     }
 }

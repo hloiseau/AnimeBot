@@ -23,6 +23,6 @@ class SearchAiringAnimeHandler : CommandHandler(true, "Search string."){
             message.append(anime.toFullAnime().titleEnglish).append("\n")
             message.append("${anime.imageUrl!!} \n")
         }
-        event.channel.sendMessage(message).queue()
+        event.message.reply(message).queue()
     }
 }
