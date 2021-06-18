@@ -9,20 +9,18 @@ import io.kuinox.bot.persistence.Store
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 import java.lang.StringBuilder
 
-class SearchAnime : CommandWithArguments("anime", SearchAnimeHandler()) {
-
-    override val helpDescription: String = "> ${Settings.PREFIX}anime <name> → Show anime containing <name>"
+class GetAnimeImage : CommandWithArguments("img", GetAnimeImageHandler()) {
+    override val helpDescription: String = "> ${Settings.PREFIX}img <Name> → Show Image of anime with <Name>"
 }
 
-class SearchAnimeHandler: CommandHandler(true, "Search string.") {
-    override suspend fun run(args:List<String>, event: GuildMessageReceivedEvent, store: Store, bot: Bot) {
+class GetAnimeImageHandler : CommandHandler(true, "Search string.") {
+    override suspend fun run(args: List<String>, event: GuildMessageReceivedEvent, store: Store, bot: Bot) {
         val animeList = GetAnimeList()
         val search = args.single()
+        val anime = animeList.searchForAnime(search)?.first()?.toFullAnime()
         val message = StringBuilder()
-        for ( anime in animeList.searchForAnime(search)!!){
-            message.append(anime.toFullAnime().titleEnglish).append("\n")
-            message.append("${anime.url!!} \n")
-        }
+        message.append("${anime?.titleEnglish!!} \n")
+        message.append("${anime.imageUrl!!} \n")
         event.channel.sendMessage(message).queue()
     }
 }

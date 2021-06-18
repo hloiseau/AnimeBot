@@ -10,7 +10,7 @@ import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 import java.lang.StringBuilder
 
 class GetAnimePage : CommandWithArguments("animePage", GetAnimeTrailerHandler()) {
-    override val helpDescription: String = "> ${Settings.PREFIX}animePage <id> → Show page of anime with <id>"
+    override val helpDescription: String = "> ${Settings.PREFIX}page <Name> → Show page of anime with <Name>"
 }
 
 class GetAnimePageHandler : CommandHandler(true, "Search string.") {

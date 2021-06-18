@@ -9,8 +9,8 @@ import io.kuinox.bot.persistence.Store
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 import java.lang.StringBuilder
 
-class GetAnimeTrailer : CommandWithArguments("animeTrailer", GetAnimeTrailerHandler()) {
-    override val helpDescription: String = "> ${Settings.PREFIX}animeTrailer <id> → Show trailer of anime with <id>"
+class GetAnimeTrailer : CommandWithArguments("trailer", GetAnimeTrailerHandler()) {
+    override val helpDescription: String = "> ${Settings.PREFIX}trailer <Name> → Show trailer of anime with <Name>"
 }
 
 class GetAnimeTrailerHandler : CommandHandler(true, "Search string."){

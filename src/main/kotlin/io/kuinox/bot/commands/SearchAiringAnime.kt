@@ -9,9 +9,9 @@ import io.kuinox.bot.persistence.Store
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 import java.lang.StringBuilder
 
-class SearchAiringAnime: CommandWithArguments("airingAnime", SearchAiringAnimeHandler()) {
+class SearchAiringAnime: CommandWithArguments("airing", SearchAiringAnimeHandler()) {
 
-    override val helpDescription: String = "> ${Settings.PREFIX}airingAnime <name> → Show airing anime containing <name>"
+    override val helpDescription: String = "> ${Settings.PREFIX}airing <name> → Show airing anime containing <name>"
 }
 
 class SearchAiringAnimeHandler : CommandHandler(true, "Search string."){
