@@ -12,15 +12,15 @@ abstract class Command(private val label: String) {
         val command = message[0]
         if (!command.startsWith(Settings.PREFIX)) return false
         val commandTxt = command.drop(1)
-        if (label != commandTxt) {
+        if (!label.equals(commandTxt, ignoreCase = true)) {
             val content = store.getContent()
             val realCommand = content.aliases[commandTxt]
-            if( realCommand != label ) return false
+            if (!realCommand.equals(label, ignoreCase = true)) return false
         }
         run(message.drop(1), event, store, bot)
         return true
     }
 
-    abstract suspend fun run( args: List<String>, event: GuildMessageReceivedEvent, store: Store, bot: Bot)
+    abstract suspend fun run(args: List<String>, event: GuildMessageReceivedEvent, store: Store, bot: Bot)
     abstract val helpDescription: String
 }

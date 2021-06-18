@@ -12,7 +12,7 @@ class SetAlias : CommandWithArguments("setAlias", SetAliasHandler()) {
         get() = "> ${Settings.PREFIX}setAlias aled help\nSet an alias 'aled' for the command 'help'"
 }
 
-class SetAliasHandler : CommandHandler(false, "Alias name.") {
+class SetAliasHandler : CommandHandler(false, "Alias name.", "Command name.") {
     override suspend fun run(args: List<String>, event: GuildMessageReceivedEvent, store: Store, bot: Bot) {
         val content = store.getContent()
         val alias = content.aliases[args[0]]

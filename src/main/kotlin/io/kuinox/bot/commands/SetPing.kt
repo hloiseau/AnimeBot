@@ -7,7 +7,7 @@ import io.kuinox.bot.commands.helpers.CommandWithArguments
 import io.kuinox.bot.persistence.Store
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 
-class SetPing : CommandWithArguments("setping", SetPingHandler()) {
+class SetPing : CommandWithArguments("setPing", SetPingHandler()) {
 
     override val helpDescription: String = "> ${Settings.PREFIX}setping <mention> → Set ping command to mention user or group"
 }
