@@ -20,7 +20,8 @@ class SearchAnimeHandler: CommandHandler(true, "Search string.") {
         val search = args.single()
         val message = StringBuilder()
         for ( anime in animeList.searchForAnime(search)!!){
-            message.append(anime.toFullAnime().titleEnglish).append("\n")
+            val currAnime = anime.toFullAnime()
+            message.append( currAnime.titleEnglish ?: currAnime.title ?: currAnime.titleJapanese ?: currAnime.titleSynonyms.firstOrNull() ).append("\n")
             message.append("${anime.url!!} \n")
         }
         event.message.reply(message).queue()

@@ -20,8 +20,11 @@ class GetAnimeHandler : CommandHandler(true, "Search string.") {
         val id = args.single().filter{ it.isDigit() }.toInt()
         val anime = animeList.getAnimeById(id)
         val message = StringBuilder()
-        message.append("${anime?.titleEnglish!!} \n")
-        message.append("${anime.imageUrl!!} \n")
+        val english = if (anime?.titleEnglish == "null") null else anime?.titleEnglish
+        val title = if (anime?.title == "null") null else anime?.title
+        val jp = if (anime?.titleJapanese == "null") null else anime?.titleJapanese
+        message.append("${ english?: title ?: jp} \n")
+        message.append("${anime?.imageUrl!!} \n")
         event.message.reply(message).queue()
     }
 }
