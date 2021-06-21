@@ -9,7 +9,7 @@ import io.kuinox.bot.persistence.Store
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 import java.lang.StringBuilder
 
-class GetAnimePage : CommandWithArguments("animePage", GetAnimeTrailerHandler()) {
+class GetAnimePage : CommandWithArguments("page", GetAnimePageHandler()) {
     override val helpDescription: String = "> ${Settings.PREFIX}page <Name> → Show page of anime with <Name>"
 }
 
